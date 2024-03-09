@@ -1,10 +1,10 @@
-@model List<Utente>
+@model dataBase
 @{
     ViewData["Title"] = "Prenotato";
 }
-<h2>Grazie @Model[0].Nome</h2>
+<h2>Grazie @Model.Utenti.First().Nome</h2>
 <p>per esserti registrato! </p>
-<p>Sono stati registrati @Model.Count utenti... </p>
+<p>Sono stati registrati @Model.Utenti.Count() utenti... </p>
 
 <table class="table">
     <tr>
@@ -15,7 +15,7 @@
         <th>Email</th>
     </tr>
     </thead>
-    @{foreach(var item in @Model){
+    @{foreach(var item in @Model.Utenti){
     <tr>
         <td>@item.Nome</td>
         <td>@item.Cognome</td>

@@ -8,7 +8,6 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    private static List<Utente> Utenti = new List<Utente>();
 
     public HomeController(ILogger<HomeController> logger)
     {
@@ -29,11 +28,19 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult Database()
+    {
+        dataBase db = new ();
+        db.SaveChanges();
+        return View(db);
+    }
     [HttpPost]
      public IActionResult Prenotato( Utente u)
     {
-        Utenti.Add(u);
-        return View(Utenti);
+        dataBase db = new ();
+        db.Utenti.Add(u);
+        db.SaveChanges();
+        return View(db);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

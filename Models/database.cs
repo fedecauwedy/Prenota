@@ -1,4 +1,4 @@
-
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Prenota.Models;
 public class dataBase : DbContext
@@ -8,7 +8,7 @@ public class dataBase : DbContext
 
         protected override void 
                 OnConfiguring(DbContextOptionsBuilder options)
-                => options.UseSqlite("Data Source=MioDB.db");
+                => options.UseSqlite("Data Source=database.db");
 
         public DbSet<Utente> Utenti { get ; set; }
     }
